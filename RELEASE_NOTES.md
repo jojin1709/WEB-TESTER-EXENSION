@@ -5,6 +5,10 @@
 
 WebTester Pro v1.0.0 is the first public GitHub release of the cross-browser web security testing extension for Firefox, Chrome, Edge, and Brave.
 
+Documentation and screenshots:
+
+https://jojin1709.github.io/WEB-TESTER-EXENSION/
+
 ## Release Assets
 
 Firefox Add-ons listing:

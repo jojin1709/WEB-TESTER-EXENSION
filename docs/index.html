@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WebTester Pro Documentation</title>
+  <meta name="description" content="WebTester Pro documentation, screenshots, features, install links, and authorized security testing workflow.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="WebTester Pro home">
+      <img src="assets/icon48.png" alt="">
+      <span>WebTester Pro</span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="#features">Features</a>
+      <a href="#screenshots">Screenshots</a>
+      <a href="#install">Install</a>
+      <a href="#privacy">Privacy</a>
+      <a href="https://github.com/jojin1709/WEB-TESTER-EXENSION">GitHub</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Developed by Jojin John</div>
+        <h1>WebTester Pro</h1>
+        <p class="lead">A cross-browser security testing extension for authorized bug bounty research, web application testing, payload management, JWT review, recon notes, and report preparation.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="https://addons.mozilla.org/en-US/firefox/addon/webtester-pro/">Add to Firefox</a>
+          <a class="button" href="https://github.com/jojin1709/WEB-TESTER-EXENSION/releases/tag/v1.0.0">Download Release</a>
+          <a class="button" href="#screenshots">View Screenshots</a>
+        </div>
+      </div>
+      <img class="hero-shot" src="assets/screenshots/dashboard.png" alt="WebTester Pro dashboard showing payload, favorites, notes, and checklist counts.">
+    </section>
+
+    <section id="features">
+      <div class="section-head">
+        <h2>Built For Security Workflow</h2>
+        <p>WebTester Pro keeps common testing utilities close to the browser without sending telemetry or requiring an external service.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="card">
+          <h3>Payload Browser</h3>
+          <p>Search, filter, copy, favorite, import, and export payloads across common web vulnerability categories.</p>
+        </article>
+        <article class="card">
+          <h3>Encoding Tools</h3>
+          <p>URL, Base64, HTML, Unicode, and Hex encode/decode tools for quick request and payload preparation.</p>
+        </article>
+        <article class="card">
+          <h3>JWT Toolkit</h3>
+          <p>Decode JWT headers and payloads, inspect claims, and review common token implementation risks.</p>
+        </article>
+        <article class="card">
+          <h3>Regex Library</h3>
+          <p>Ready-to-copy patterns for secrets, tokens, URLs, cloud keys, and other useful detection tasks.</p>
+        </article>
+        <article class="card">
+          <h3>AI Assistant</h3>
+          <p>Optional user-configured AI provider support for explanations, next steps, and report drafting.</p>
+        </article>
+        <article class="card">
+          <h3>Recon And Reports</h3>
+          <p>Command references, testing checklists, notes, wordlists, and report templates in one workspace.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="screenshots">
+      <div class="section-head">
+        <h2>Inside The Extension</h2>
+        <p>Screenshots from the popup and full workspace show the tools users get after installing WebTester Pro.</p>
+      </div>
+      <div class="screenshot-grid">
+        <figure class="screenshot">
+          <img src="assets/screenshots/popup-overview.png" alt="Compact WebTester Pro popup overview.">
+          <figcaption><strong>Fast Popup Access</strong>Open the extension, search payloads, view favorites, and jump into the full workspace.</figcaption>
+        </figure>
+        <figure class="screenshot">
+          <img src="assets/screenshots/payload-browser.png" alt="Payload browser with XSS payload cards.">
+          <figcaption><strong>Payload Browser</strong>Browse 274 payloads, filter by category, copy payloads, and mark favorites.</figcaption>
+        </figure>
+        <figure class="screenshot">
+          <img src="assets/screenshots/encoder-decoder.png" alt="Encoder and decoder tool interface.">
+          <figcaption><strong>Encoder / Decoder</strong>Convert text between common web encoding formats during testing.</figcaption>
+        </figure>
+        <figure class="screenshot">
+          <img src="assets/screenshots/ai-assistant.png" alt="AI assistant view with security testing answers.">
+          <figcaption><strong>AI Assistant</strong>Use optional providers such as Groq, OpenRouter, Ollama, or LM Studio when configured.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>More Tools</h2>
+        <p>JWT review, regex lookup, recon commands, settings, and the popup payload list are included in the same extension.</p>
+      </div>
+      <div class="gallery-strip">
+        <img src="assets/screenshots/popup-payloads.png" alt="Popup payload list.">
+        <img src="assets/screenshots/jwt-toolkit.png" alt="JWT toolkit.">
+        <img src="assets/screenshots/regex-library.png" alt="Regex library.">
+        <img src="assets/screenshots/recon-toolkit.png" alt="Recon toolkit.">
+      </div>
+    </section>
+
+    <section id="install">
+      <div class="section-head">
+        <h2>Install</h2>
+        <p>Firefox users can use Mozilla Add-ons. Chromium-based browsers can load the Chrome package manually.</p>
+      </div>
+      <div class="install-grid">
+        <article class="card">
+          <h3>Firefox</h3>
+          <p>Install from the official listing when available.</p>
+          <p><a class="button primary" href="https://addons.mozilla.org/en-US/firefox/addon/webtester-pro/">Add to Firefox</a></p>
+        </article>
+        <article class="card">
+          <h3>Chrome / Edge / Brave</h3>
+          <p>Download `WebTesterPro-Chrome.zip`, extract it, enable Developer Mode, and choose Load unpacked.</p>
+          <p><a class="button" href="https://github.com/jojin1709/WEB-TESTER-EXENSION/releases/tag/v1.0.0">Download ZIP</a></p>
+        </article>
+        <article class="card">
+          <h3>Source</h3>
+          <p>Build packages locally with `python scripts/build_release.py` from the repository root.</p>
+          <p><a class="button" href="https://github.com/jojin1709/WEB-TESTER-EXENSION">View Source</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="privacy">
+      <div class="section-head">
+        <h2>Privacy And Responsible Use</h2>
+      </div>
+      <div class="trust-grid">
+        <article class="card">
+          <h3>No Telemetry</h3>
+          <p>WebTester Pro declares no data collection and stores extension data locally in browser storage.</p>
+        </article>
+        <article class="card">
+          <h3>Optional AI</h3>
+          <p>AI features run only after the user manually configures an external provider.</p>
+        </article>
+        <article class="card">
+          <h3>Authorized Testing Only</h3>
+          <p>Use this extension only on systems you own or where you have explicit written permission to test.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="callout">
+        <div>
+          <div class="eyebrow">Ready to test</div>
+          <h2>Install WebTester Pro</h2>
+          <p>Firefox, Chrome, Edge, Brave, and source packages are available from the project links.</p>
+        </div>
+        <div class="hero-actions">
+          <a class="button primary" href="https://addons.mozilla.org/en-US/firefox/addon/webtester-pro/">Add to Firefox</a>
+          <a class="button" href="https://github.com/jojin1709/WEB-TESTER-EXENSION/releases/tag/v1.0.0">GitHub Release</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <strong>DEVELOPED BY JOJIN JOHN</strong>
+    <p>Copyright © 2026 Jojin John. All rights reserved. Use only for authorized security testing.</p>
+  </footer>
+</body>
+</html>

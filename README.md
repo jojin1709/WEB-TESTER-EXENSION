@@ -6,6 +6,12 @@ WebTester Pro is a cross-browser web security testing extension for Firefox, Chr
 
 > Use this extension only on systems you own or where you have explicit written permission to test.
 
+## Documentation
+
+Full documentation and screenshots:
+
+https://jojin1709.github.io/WEB-TESTER-EXENSION/
+
 ## Download
 
 Firefox users can install directly from Mozilla Add-ons:
@@ -21,6 +27,28 @@ You can also go to the **Releases** page and download the package for your brows
 | Edge | `WebTesterPro-Chrome.zip` | Load unpacked extension |
 | Brave | `WebTesterPro-Chrome.zip` | Load unpacked extension |
 | Source | `WebTesterPro-Source.zip` | Developer source archive |
+
+## Screenshots
+
+### Full Workspace Dashboard
+
+![WebTester Pro dashboard](docs/assets/screenshots/dashboard.png)
+
+### Payload Browser
+
+![Payload browser with XSS payloads](docs/assets/screenshots/payload-browser.png)
+
+### Compact Popup
+
+![WebTester Pro compact popup](docs/assets/screenshots/popup-overview.png)
+
+### Encoder / Decoder
+
+![Encoder and decoder tools](docs/assets/screenshots/encoder-decoder.png)
+
+### AI Assistant
+
+![AI assistant workspace](docs/assets/screenshots/ai-assistant.png)
 
 ## Features
 
