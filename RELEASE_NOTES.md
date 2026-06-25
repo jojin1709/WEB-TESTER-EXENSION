@@ -7,6 +7,10 @@ WebTester Pro v1.0.0 is the first public GitHub release of the cross-browser web
 
 ## Release Assets
 
+Firefox Add-ons listing:
+
+https://addons.mozilla.org/en-US/firefox/addon/webtester-pro/
+
 | File | Description |
 |---|---|
 | `WebTesterPro-Firefox.zip` | Firefox extension folder packaged as ZIP |
@@ -27,7 +31,7 @@ WebTester Pro v1.0.0 is the first public GitHub release of the cross-browser web
 
 ## Install
 
-Firefox users can download `WebTesterPro-Firefox.zip`, extract it, and load `manifest.json` from `about:debugging`. Chrome, Edge, and Brave users can download `WebTesterPro-Chrome.zip`, extract it, enable Developer mode in the browser extension page, and use **Load unpacked**.
+Firefox users can install from https://addons.mozilla.org/en-US/firefox/addon/webtester-pro/ or download `WebTesterPro-Firefox.zip`, extract it, and load `manifest.json` from `about:debugging`. Chrome, Edge, and Brave users can download `WebTesterPro-Chrome.zip`, extract it, enable Developer mode in the browser extension page, and use **Load unpacked**.
 
 ## Safety Notice
 

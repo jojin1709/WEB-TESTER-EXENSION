@@ -4,6 +4,10 @@
 
 This folder contains the Firefox build of WebTester Pro.
 
+## Install From Mozilla Add-ons
+
+https://addons.mozilla.org/en-US/firefox/addon/webtester-pro/
+
 ## Install Temporarily
 
 1. Extract `WebTesterPro-Firefox.zip`.

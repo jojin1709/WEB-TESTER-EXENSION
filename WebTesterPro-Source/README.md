@@ -10,9 +10,10 @@ WebTester Pro is a browser extension for authorized web application security tes
 
 ### Firefox
 
-1. Download `WebTesterPro-Firefox.zip` or `WebTesterPro.xpi` from the GitHub release.
-2. For temporary testing, open `about:debugging`, choose **This Firefox**, click **Load Temporary Add-on...**, and select `manifest.json`.
-3. For XPI install, open `about:addons`, use **Install Add-on From File...**, and select `WebTesterPro.xpi`.
+1. Install from Mozilla Add-ons: https://addons.mozilla.org/en-US/firefox/addon/webtester-pro/
+2. Or download `WebTesterPro-Firefox.zip` or `WebTesterPro.xpi` from the GitHub release.
+3. For temporary testing, open `about:debugging`, choose **This Firefox**, click **Load Temporary Add-on...**, and select `manifest.json`.
+4. For XPI install, open `about:addons`, use **Install Add-on From File...**, and select `WebTesterPro.xpi`.
 
 ### Chrome, Edge, And Brave
 
