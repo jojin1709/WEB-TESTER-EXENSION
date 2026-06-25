@@ -92,14 +92,13 @@ WebTesterPro.xpi        Firefox XPI package
 
 ## Build
 
-The source package includes a Bash build script:
+Use the cross-platform release builder from the repository root:
 
 ```bash
-cd WebTesterPro-Source
-bash scripts/build.sh all
+python scripts/build_release.py
 ```
 
-Build output is written to `WebTesterPro-Source/release/`.
+Build output is written to `release/`. The builder writes ZIP entries with forward-slash paths so Firefox AMO accepts the package.
 
 ## Security And Privacy
 
