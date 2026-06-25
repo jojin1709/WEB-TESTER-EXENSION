@@ -14,4 +14,8 @@ This folder contains the Chrome, Edge, and Brave build of WebTester Pro.
 
 Repository: https://github.com/jojin1709/WEB-TESTER-EXENSION
 
+License: Proprietary. All rights reserved by Jojin John. Copying, modifying,
+redistributing, rebranding, selling, or claiming this work as your own is not
+permitted without written permission.
+
 Use only on systems you own or have explicit written permission to test.

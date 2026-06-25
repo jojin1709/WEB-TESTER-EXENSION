@@ -34,6 +34,12 @@ Release files are generated in `release/`.
 
 Repository: https://github.com/jojin1709/WEB-TESTER-EXENSION
 
+## License
+
+Proprietary. All rights reserved by Jojin John. Copying, modifying,
+redistributing, rebranding, selling, or claiming this work as your own is not
+permitted without written permission.
+
 ## Author
 
 **DEVELOPED BY JOJIN JOHN**

@@ -113,6 +113,14 @@ Build output is written to `WebTesterPro-Source/release/`.
 
 WebTester Pro includes offensive security payloads and testing utilities. Only use it for legal, authorized testing, such as your own applications, lab environments, bug bounty targets in scope, or client systems where you have written permission.
 
+## License
+
+Copyright (c) 2026 Jojin John. All rights reserved.
+
+This project is proprietary. You may download and use official releases for personal, educational, and authorized security testing only. Copying, modifying, redistributing, rebranding, selling, or claiming this work as your own is not permitted without written permission from Jojin John.
+
+See [LICENSE](./LICENSE) for the full terms.
+
 ## Author
 
 **DEVELOPED BY JOJIN JOHN**
