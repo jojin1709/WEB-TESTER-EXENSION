@@ -12,6 +12,13 @@ Full documentation and screenshots:
 
 https://jojin1709.github.io/WEB-TESTER-EXENSION/
 
+## Support And Connect
+
+- LinkedIn: https://www.linkedin.com/in/jojin-john
+- Buy Me a Coffee: https://www.buymeacoffee.com/jojin1709
+
+<a href="https://www.buymeacoffee.com/jojin1709"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a thanks&emoji=🙂&slug=jojin1709&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" alt="Buy me a thanks" /></a>
+
 ## Download
 
 Firefox users can install directly from Mozilla Add-ons:
@@ -163,3 +170,4 @@ See [LICENSE](./LICENSE) for the full terms.
 **DEVELOPED BY JOJIN JOHN**
 
 GitHub: [jojin1709](https://github.com/jojin1709)
+LinkedIn: [jojin-john](https://www.linkedin.com/in/jojin-john)

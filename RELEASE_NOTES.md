@@ -9,6 +9,14 @@ Documentation and screenshots:
 
 https://jojin1709.github.io/WEB-TESTER-EXENSION/
 
+Connect with Jojin John:
+
+https://www.linkedin.com/in/jojin-john
+
+Support the project:
+
+https://www.buymeacoffee.com/jojin1709
+
 ## Release Assets
 
 Firefox Add-ons listing:

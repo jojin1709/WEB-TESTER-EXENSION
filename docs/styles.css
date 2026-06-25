@@ -243,6 +243,38 @@ section {
   padding: clamp(24px, 4vw, 42px);
 }
 
+.support-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.support-panel > div {
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.support-panel p {
+  color: var(--muted);
+}
+
+.support-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.bmc-button img {
+  max-width: 230px;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 12px;
+}
+
 .site-footer {
   padding: 34px clamp(18px, 4vw, 64px);
   border-top: 1px solid var(--line);
@@ -271,5 +303,9 @@ section {
   .callout {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .support-panel {
+    grid-template-columns: 1fr;
   }
 }
