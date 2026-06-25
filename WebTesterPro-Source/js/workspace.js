@@ -139,7 +139,12 @@ const AI_DEFAULTS = {
   };
   // Safe DOM getter — returns null-safe proxy so .prop = val never throws
   const $ = id => document.getElementById(id);
-  const setHTML = (id, html) => { const el = $(id); if (el) el.innerHTML = html; };
+  const setHTML = (id, html) => {
+    const el = $(id);
+    if (!el) return;
+    const doc = new DOMParser().parseFromString(String(html), 'text/html');
+    el.replaceChildren(...Array.from(doc.body.childNodes));
+  };
   const setTxt  = (id, txt)  => { const el = $(id); if (el) el.textContent = txt; };
   const setVal  = (id, v)    => { const el = $(id); if (el) el.value = v; };
   const show    = (id, d)    => { const el = $(id); if (el) el.style.display = d || ''; };
@@ -539,7 +544,7 @@ const AI_DEFAULTS = {
       const iatDate = payload.iat ? new Date(payload.iat * 1000).toLocaleString() : 'N/A';
 
       const jwtInfoEl = document.getElementById('jwtInfo'); if (!jwtInfoEl) return;
-      jwtInfoEl.innerHTML = `
+      setHTML('jwtInfo', `
         <div style="display:flex;flex-direction:column;gap:8px;font-size:13px">
           <div>Algorithm: <strong style="color:var(--accent3)">${Utils.sanitize(header.alg || 'N/A')}</strong></div>
           <div>Type: <strong>${Utils.sanitize(header.typ || 'N/A')}</strong></div>
@@ -551,15 +556,15 @@ const AI_DEFAULTS = {
           ${header.alg === 'none' ? '<div class="badge badge-red">⚠ alg:none detected!</div>' : ''}
           ${header.jwk ? '<div class="badge badge-red">⚠ Embedded JWK!</div>' : ''}
           ${header.jku ? '<div class="badge badge-red">⚠ jku header!</div>' : ''}
-        </div>`;
+        </div>`);
 
       const jwtPartsEl = document.getElementById('jwtParts'); if (!jwtPartsEl) return;
-      jwtPartsEl.innerHTML = `
+      setHTML('jwtParts', `
         <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
           <div class="jwt-part"><div class="jwt-part-label jwt-header-label">Header</div><pre>${Utils.sanitize(JSON.stringify(header,null,2))}</pre></div>
           <div class="jwt-part"><div class="jwt-part-label jwt-payload-label">Payload</div><pre>${Utils.sanitize(JSON.stringify(payload,null,2))}</pre></div>
           <div class="jwt-part"><div class="jwt-part-label jwt-sig-label">Signature</div><pre style="word-break:break-all">${Utils.sanitize(sig || '(empty)')}</pre></div>
-        </div>`;
+        </div>`);
     } catch (e) { Utils.showToast('Failed to decode JWT: ' + e.message, 'error'); }
   });
 
@@ -591,7 +596,7 @@ const AI_DEFAULTS = {
       (!regexCat || r.cat === regexCat)
     );
 
-    listEl.innerHTML = filtered.map(r => `
+    setHTML('regexList', filtered.map(r => `
       <div class="regex-item">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
           <strong style="font-size:13px">${Utils.sanitize(r.name)}</strong>
@@ -600,7 +605,7 @@ const AI_DEFAULTS = {
         <div style="font-size:12px;color:var(--text2);margin-bottom:6px">${Utils.sanitize(r.desc)}</div>
         <div class="regex-pattern">${Utils.sanitize(r.pattern)}</div>
         <button class="btn btn-sm" data-pattern="${Utils.sanitize(r.pattern)}">Copy Pattern</button>
-      </div>`).join('');
+      </div>`).join(''));
 
     listEl.querySelectorAll('[data-pattern]').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -740,7 +745,7 @@ const AI_DEFAULTS = {
 
     const clContainer = document.getElementById('checklistContent');
     if (!clContainer) return;
-    clContainer.innerHTML = `
+    setHTML('checklistContent', `
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
         <strong style="font-size:15px">${Utils.sanitize(activeChecklist)}</strong>
         <span class="badge badge-green">${done}/${items.length} (${pct}%)</span>
@@ -752,7 +757,7 @@ const AI_DEFAULTS = {
             <input type="checkbox" data-cl="${activeChecklist}" data-i="${i}" ${state[i] ? 'checked' : ''}>
             <span class="checklist-text ${state[i] ? 'done' : ''}">${Utils.sanitize(item)}</span>
           </div>`).join('')}
-      </div>`;
+      </div>`);
 
     document.querySelectorAll('input[data-cl]').forEach(cb => {
       cb.addEventListener('change', async () => {
@@ -776,7 +781,11 @@ const AI_DEFAULTS = {
   function renderWordlists() {
     const sel = document.getElementById('wordlistSelect');
     if (!sel) return;
-    sel.innerHTML = '<option value="">Select a wordlist…</option>';
+    sel.replaceChildren();
+    const defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.textContent = 'Select a wordlist…';
+    sel.appendChild(defaultOption);
     Object.keys(wordlists).forEach(name => {
       const o = document.createElement('option');
       o.value = name; o.textContent = name;
@@ -827,7 +836,7 @@ const AI_DEFAULTS = {
       !q || t.name.toLowerCase().includes(q) || t.desc.toLowerCase().includes(q) || t.type.toLowerCase().includes(q)
     );
     const reconContainer = document.getElementById('reconList'); if (!reconContainer) return;
-    reconContainer.innerHTML = filtered.map(t => `
+    setHTML('reconList', filtered.map(t => `
       <div class="recon-tool">
         <div class="recon-tool-header">
           <span class="recon-tool-name">${Utils.sanitize(t.name)}</span>
@@ -836,7 +845,7 @@ const AI_DEFAULTS = {
         <div class="recon-tool-desc">${Utils.sanitize(t.desc)}</div>
         ${t.cmd.split('\n').map(c => `<div class="recon-tool-cmd">${Utils.sanitize(c)}</div>`).join('')}
         <button class="btn btn-sm" data-rcmd="${Utils.sanitize(t.cmd)}">Copy Commands</button>
-      </div>`).join('');
+      </div>`).join(''));
     document.querySelectorAll('[data-rcmd]').forEach(btn => {
       btn.addEventListener('click', () => { Utils.copyToClipboard(btn.dataset.rcmd); Utils.showToast('Copied!'); });
     });

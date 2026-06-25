@@ -40,7 +40,11 @@ const Utils = {
     const toast = document.createElement('div');
     toast.className = `toast ${type}`;
     const icon = type === 'success' ? '✓' : '✕';
-    toast.innerHTML = `<span>${icon}</span><span>${this.escapeHtml(message)}</span>`;
+    const iconEl = document.createElement('span');
+    iconEl.textContent = icon;
+    const messageEl = document.createElement('span');
+    messageEl.textContent = message;
+    toast.append(iconEl, messageEl);
     container.appendChild(toast);
     setTimeout(() => {
       toast.style.opacity = '0';
